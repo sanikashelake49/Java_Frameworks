@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	 http://www.springframework.org/schema/mvc 
+   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+  	http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx 
+   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+   
+   <context:property-placeholder location="login.properties,db.properties"/>
+    
+   
+    <!-- this is for the annotation(scan for the searching the where is the a bean of the class) -->
+    <context:component-scan base-package="com.core.annotation,com.annotation.student,com.DAO"/>
+    <context:annotation-config/><!-- this will unable spring core annotation/not enable spring restapi/   -->
+   
+     <!-- Spring Dao -->
+   <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+     <property name="driverClassName" value="${db.class}"/>
+     <property name="url" value="${db.url}"/>
+     <property name="username" value="${db.user}"/>
+     <property name="password" value="${db.password}"/>
+   </bean>
+   
+   <!-- this id for the internal injection -->
+   <bean id="per" class="com.core.Internal.Person">
+      <property name="per_id" value="1"/>
+      <property name="per_name" value="java"/>
+      <property name="addr">
+       <bean id="ad" class="com.core.Internal.Address">
+         <property name="city" value="Solapur"/>
+         <property name="state" value="MH"/>
+       </bean>
+      </property>
+   </bean>
+   
+   <!-- this for the properties file -->
+   <bean id="lb" class="com.core.Internal.loginBean">
+    <property name="username" value="${login.user}"/>
+    <property name="userpwd" value="${login.password}"/>
+    </bean>
+    
+    <!-- master card interface -->
+    <bean id="pr" class="com.core.MasterCard"/>
+    <bean id="p" class="com.core.PaymentAppClass">
+    <property name="card" ref="pr"/>
+    </bean>
+   
+    <bean id="h" class="com.core.HelloWorld"/>
+    
+    <bean id="r" class="com.core.ResourceInjection">
+    <property name="file" value="Salesforce certificate.pdf"/>
+    </bean>
+    
+    <!-- usion DAO Template -->
+    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+    <constructor-arg ref="ds"></constructor-arg>
+    </bean>
+   
+   
+    
+   
+     
+     
+         
+ 
+      
+       
+     
+      
+      
+   
+       
+                
+     
+   
+
+      
+           
+</beans>
