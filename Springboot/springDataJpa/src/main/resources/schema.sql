@@ -1,0 +1,1 @@
+//create table emp1(stdId int,stdName varchar(20))
