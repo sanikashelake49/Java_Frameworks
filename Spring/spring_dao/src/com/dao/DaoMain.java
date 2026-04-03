@@ -10,8 +10,8 @@ public class DaoMain {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 		JdbsPersonDAO jd=ctx.getBean("pdao",JdbsPersonDAO.class);
 		Person p=new Person();
-		p.setId(2);
-		p.setName("Sanika");
+		 p.setId(2);
+		 p.setName("Sanika");
 		
 		jd.create(p);
 		System.out.println(jd.retrieve(1));
