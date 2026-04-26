@@ -10,7 +10,7 @@ public class StudentBean {
 	public StudentBean(Integer id, String name) {
 		super();
 		this.id = id;
-		this.name = name;
+	 	this.name = name;
 	}
 	public Integer getId() {
 		return id;
