@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>failure</title>
-</head>
+</head> 
 <body bgcolor="red" text="white">
 <h2>What a super failure !!!</h2>
 
