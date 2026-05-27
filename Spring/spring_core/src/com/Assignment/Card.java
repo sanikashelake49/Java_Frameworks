@@ -1,6 +1,6 @@
 package com.Assignment;
 
-public interface Card {
+public interface Card { 
 	 boolean verify(String cardNo); 
 
 }  
